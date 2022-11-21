@@ -1,0 +1,414 @@
+
+-DOCSTART-	-X-	-X-	O
+
+Người	Nc	B-NP	O
+cầm	V	B-VP	O
+thư	N	B-NP	O
+đã	R	O	O
+chết	V	B-VP	O
+còn	R	O	O
+người	N	B-NP	O
+nhận	V	B-VP	O
+thư	N	B-NP	O
+thì	C	O	O
+bị	V	B-VP	O
+bắt	V	B-VP	O
+!	CH	O	O
+
+Biết bao nhiêu	L	B-NP	O
+bà	Nc	B-NP	O
+mẹ	N	B-NP	O
+như	C	O	O
+mẹ	N	B-NP	O
+Đường	Np	B-NP	B-PER
+sẽ	R	O	O
+còn	V	B-VP	O
+đau khổ	A	B-AP	O
+khóc than	V	B-VP	O
+đến	E	B-PP	O
+cạn	V	B-VP	O
+dòng	N	B-NP	O
+nước mắt	N	B-NP	O
+.	CH	O	O
+
+-DOCSTART-	-X-	-X-	O
+
+Ôi	I	O	O
+nếu	C	O	O
+mình	P	B-NP	O
+ngã	V	B-VP	O
+xuống	V	B-VP	O
+,	CH	O	O
+mẹ	N	B-NP	O
+mình	P	B-NP	O
+cũng	R	O	O
+sẽ	R	O	O
+như	C	O	O
+bà	Nc	B-NP	O
+mẹ	N	B-NP	O
+ấy	P	B-NP	O
+thôi	T	O	O
+,	CH	O	O
+cũng	R	O	O
+sẽ	R	O	O
+là	V	B-VP	O
+một	M	B-NP	O
+bà	Nc	B-NP	O
+mẹ	N	B-NP	O
+suốt	A	B-AP	O
+đời	N	B-NP	O
+hi sinh	V	B-VP	O
+vì	E	B-PP	O
+con	N	B-NP	O
+để	E	B-PP	O
+rồi	C	O	O
+mãi mãi	R	O	O
+đau xót	A	B-AP	O
+vì	E	B-PP	O
+con	N	B-NP	O
+mình	P	B-NP	O
+đã	R	O	O
+ngã	V	B-VP	O
+xuống	V	B-VP	O
+nơi	N	B-NP	O
+chiến trường	N	B-NP	O
+khói lửa	N	B-NP	O
+.	CH	O	O
+
+Mẹ	N	B-NP	O
+ơi	I	O	O
+!	CH	O	O
+
+-DOCSTART-	-X-	-X-	O
+
+Con	N	B-NP	O
+biết	V	B-VP	O
+nói	V	B-VP	O
+sao	P	B-NP	O
+khi	N	B-NP	O
+lòng	N	B-NP	O
+con	N	B-NP	O
+thương	V	B-VP	O
+mẹ	N	B-NP	O
+trăm	M	B-NP	O
+nghìn	M	B-NP	O
+triệu	M	B-NP	O
+mà	C	O	O
+cũng	R	O	O
+đành	V	B-VP	O
+xa	V	B-VP	O
+mẹ	N	B-NP	O
+ra	V	B-VP	O
+đi	V	B-VP	O
+.	CH	O	O
+
+Quân thù	N	B-NP	O
+đang	R	O	O
+còn	V	B-VP	O
+đó	P	B-NP	O
+,	CH	O	O
+bao nhiêu	P	B-NP	O
+bà	Nc	B-NP	O
+mẹ	N	B-NP	O
+còn	R	O	O
+mất	V	B-VP	O
+con	N	B-NP	O
+,	CH	O	O
+bao nhiêu	P	B-NP	O
+người	N	B-NP	O
+chồng	N	B-NP	O
+mất	V	B-VP	O
+vợ	N	B-NP	O
+.	CH	O	O
+
+-DOCSTART-	-X-	-X-	O
+
+Đau xót	A	B-AP	O
+vô cùng	R	O	O
+.	CH	O	O
+
+20.5.68	M	B-NP	O
+
+-DOCSTART-	-X-	-X-	O
+
+Tiễn chân	V	B-VP	O
+những	L	B-NP	O
+bệnh nhân	N	B-NP	O
+lên đường	V	B-VP	O
+trở về	V	B-VP	O
+đội ngũ	N	B-NP	O
+chiến đấu	V	B-VP	O
+,	CH	O	O
+lẽ ra	C	O	O
+chỉ	R	O	O
+là	V	B-VP	O
+niềm	N	B-NP	O
+vui	A	B-AP	O
+,	CH	O	O
+vậy mà	C	O	O
+cả	P	B-NP	O
+người	N	B-NP	O
+đi	V	B-VP	O
+lẫn	C	O	O
+người	N	B-NP	O
+ở	V	B-VP	O
+đều	R	O	O
+buồn	V	B-VP	O
+thấm thía	V	B-VP	O
+.	CH	O	O
+
+Hơn	A	B-AP	O
+một	M	B-NP	O
+tháng	N	B-NP	O
+nằm	V	B-VP	O
+lại	V	B-VP	O
+bệnh xá	N	B-NP	O
+,	CH	O	O
+những	L	B-NP	O
+bệnh nhân	N	B-NP	O
+ấy	P	B-NP	O
+đã	R	O	O
+gắn bó	V	B-VP	O
+với	C	O	O
+mình	P	B-NP	O
+không	R	O	O
+phải	A	B-AP	O
+chỉ	R	O	O
+là	V	B-VP	O
+tình thương	N	B-NP	O
+giữa	E	B-PP	O
+người	Nc	B-NP	O
+thầy thuốc	N	B-NP	O
+với	C	O	O
+bệnh nhân	N	B-NP	O
+mà	C	O	O
+trong	E	B-PP	O
+tình cảm	N	B-NP	O
+ấy	P	B-NP	O
+có	V	B-VP	O
+cả	T	O	O
+nỗi	N	B-NP	O
+cảm thông	V	B-VP	O
+sâu sắc	A	B-AP	O
+giữa	E	B-PP	O
+những	L	B-NP	O
+người	Nc	B-NP	O
+bạn	N	B-NP	O
+.	CH	O	O
+
+-DOCSTART-	-X-	-X-	O
+
+Hôm nay	N	B-NP	O
+họ	P	B-NP	O
+đi	V	B-VP	O
+rồi	R	O	O
+,	CH	O	O
+người	N	B-NP	O
+ra	V	B-VP	O
+đi	V	B-VP	O
+còn	V	B-VP	O
+nhớ	V	B-VP	O
+chăng	R	O	O
+những	L	B-NP	O
+đêm	N	B-NP	O
+dài	A	B-AP	O
+trò chuyện	V	B-VP	O
+những	L	B-NP	O
+đêm	N	B-NP	O
+mình	P	B-NP	O
+đi	V	B-VP	O
+trực	V	B-VP	O
+.	CH	O	O
+
+Nhớ	V	B-VP	O
+chăng	R	O	O
+những	L	B-NP	O
+buổi	N	B-NP	O
+cả	P	B-NP	O
+cơ quan	N	B-NP	O
+đi	V	B-VP	O
+cõng	V	B-VP	O
+gạo	N	B-NP	O
+họ	P	B-NP	O
+đã	R	O	O
+cùng	A	B-AP	O
+mình	P	B-NP	O
+xử trí	V	B-VP	O
+một	M	B-NP	O
+cas	FW	B-NP	O
+thương	V	B-VP	O
+,	CH	O	O
+họ	P	B-NP	O
+làm	V	B-VP	O
+như	C	O	O
+những	L	B-NP	O
+nhân viên	N	B-NP	O
+thực thụ	A	B-AP	O
+,	CH	O	O
+đêm	N	B-NP	O
+đến	V	B-VP	O
+trong	E	B-PP	O
+ánh	N	B-NP	O
+đèn	N	B-NP	O
+dầu	N	B-NP	O
+họ	P	B-NP	O
+ngồi	V	B-VP	O
+hí hoáy	V	B-VP	O
+lau	V	B-VP	O
+dụng cụ	N	B-NP	O
+...	CH	O	O
+
+-DOCSTART-	-X-	-X-	O
+
+Những	L	B-NP	O
+ngày	N	B-NP	O
+ấy	P	B-NP	O
+vui	A	B-AP	O
+sao	P	B-NP	O
+!	CH	O	O
+
+Bao giờ	P	B-NP	O
+gặp	V	B-VP	O
+lại	V	B-VP	O
+nhau	N	B-NP	O
+và	C	O	O
+có	V	B-VP	O
+còn	V	B-VP	O
+được	V	B-VP	O
+gặp	V	B-VP	O
+nhau	N	B-NP	O
+không	R	O	O
+hở	I	O	O
+những	L	B-NP	O
+người	Nc	B-NP	O
+bạn	N	B-NP	O
+mến thương	V	B-VP	O
+?	CH	O	O
+
+-DOCSTART-	-X-	-X-	O
+
+20.7.68	M	B-NP	O
+
+Những	L	B-NP	O
+ngày	N	B-NP	O
+bận rộn	A	B-AP	O
+công tác	V	B-VP	O
+dồn dập	A	B-AP	O
+,	CH	O	O
+thương	N	B-NP	O
+nặng	A	B-AP	O
+,	CH	O	O
+người	N	B-NP	O
+ít	A	B-AP	O
+,	CH	O	O
+mọi	L	B-NP	O
+người	N	B-NP	O
+trong	E	B-PP	O
+bệnh xá	N	B-NP	O
+đều	R	O	O
+hết sức	R	O	O
+vất vả	A	B-AP	O
+.	CH	O	O
+
+-DOCSTART-	-X-	-X-	O
+
+Riêng	T	O	O
+mình	P	B-NP	O
+trách nhiệm	N	B-NP	O
+càng	R	O	O
+nặng nề	A	B-AP	O
+hơn	A	B-AP	O
+bao giờ	P	B-NP	O
+hết	T	O	O
+,	CH	O	O
+mỗi	L	B-NP	O
+ngày	N	B-NP	O
+làm việc	V	B-VP	O
+từ	E	B-PP	O
+sáng	N	B-NP	O
+tinh mơ	N	B-NP	O
+cho	E	B-PP	O
+đến	E	B-PP	O
+đêm	N	B-NP	O
+khuya	A	B-AP	O
+.	CH	O	O
+
+Khối lượng	N	B-NP	O
+công việc	N	B-NP	O
+quá	R	O	O
+lớn	A	B-AP	O
+mà	C	O	O
+người	N	B-NP	O
+không	R	O	O
+có	V	B-VP	O
+nên	C	O	O
+một mình	X	O	O
+mình	P	B-NP	O
+vừa	R	O	O
+phụ trách	V	B-VP	O
+bệnh xá	N	B-NP	O
+,	CH	O	O
+vừa	R	O	O
+lo	V	B-VP	O
+điều trị	V	B-VP	O
+,	CH	O	O
+vừa	R	O	O
+giảng dạy	V	B-VP	O
+.	CH	O	O
+
+-DOCSTART-	-X-	-X-	O
+
+Vô cùng	R	O	O
+vất vả	A	B-AP	O
+và	C	O	O
+cũng	R	O	O
+còn	V	B-VP	O
+nhiều	A	B-AP	O
+khó khăn	N	B-NP	O
+trong	E	B-PP	O
+công việc	N	B-NP	O
+,	CH	O	O
+nhưng	C	O	O
+hơn	A	B-AP	O
+bao giờ	P	B-NP	O
+hết	R	O	O
+mình	P	B-NP	O
+cảm thấy	V	B-VP	O
+rằng	C	O	O
+mình	P	B-NP	O
+đã	R	O	O
+đem	V	B-VP	O
+hết	V	B-VP	O
+tài năng	N	B-NP	O
+sức lực	N	B-NP	O
+của	E	B-PP	O
+mình	P	B-NP	O
+để	E	B-PP	O
+cống hiến	V	B-VP	O
+cho	E	B-PP	O
+cách mạng	N	B-NP	O
+.	CH	O	O
+
+Đôi	M	B-NP	O
+mắt	N	B-NP	O
+người	Nc	B-NP	O
+thương binh	N	B-NP	O
+hôm	N	B-NP	O
+nào	P	B-NP	O
+đau nhức	V	B-VP	O
+tưởng	V	B-VP	O
+như	C	O	O
+bỏ	V	B-VP	O
+hôm nay	N	B-NP	O
+cũng	R	O	O
+đã	R	O	O
+sáng	V	B-VP	O
+lại	V	B-VP	O
+một	M	B-NP	O
+phần	N	B-NP	O
+.	CH	O	O
+
+-DOCSTART-	-X-	-X-	O
+
+
+
