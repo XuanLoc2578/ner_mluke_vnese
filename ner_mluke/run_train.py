@@ -68,6 +68,7 @@ def main():
             if step % 50 == 49:
                 print('training loss: ', train_loss_list[-1], '   step: ', step, '   epoch: ', epoch + 1)
 
+        ## TODO using an infer script
         # model.eval()
         # with torch.set_grad_enabled(False):
         #     val_loss_list = []

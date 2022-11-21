@@ -45,6 +45,8 @@ class ReadAndWriteFile:
 
 
 class DataProcessor:
+    ## TODO rename function + split model and data using new script for model load
+    ##
 
     def gen_function(self, dataset_file):
         model_name_or_path = training_arguments.ModelArguments.model_name_or_path

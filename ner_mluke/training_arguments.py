@@ -52,12 +52,12 @@ class ModelArguments:
     )
 
 
-    # config_name: Optional[str] = field(
-    #     default=None,
-    #     metadata={
-    #         "help": "Pretrained config name or path if not the same as model_name_or_path"
-    #     },
-    # )
+    num_labels: Optional[str] = field(
+        default=5,
+        metadata={
+            "help": "Pretrained config name or path if not the same as model_name_or_path"
+        },
+    )
     # config_file: Optional[str] = field(
     #     default=None,
     #     metadata={"help": "Path to config file"},
@@ -106,3 +106,8 @@ class DataTrainingArguments:
             "help": "Number of workers"
         }
     )
+
+
+## TODO split model args and data args:
+## -model args: name, cache_dir, max_seq_len, lr, epochs, batch_size, num_labels, num_workers
+## -dataa args: path_to_3_type_folders **/files (train, dev, test)
