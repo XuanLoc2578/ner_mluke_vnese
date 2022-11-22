@@ -1,5 +1,4 @@
-import transformers
-from transformers import LukeTokenizer, LukeForTokenClassification
+text = "Ông Nguyễn Khắc Chúc hiện đang làm việc tại đại học Bách Khoa Hà Nội"
 
-# tknz = LukeTokenizer.from_pretrained(pretrained_model_name_or_path='studio-ousia/luke-large-finetuned-conll-2003')
-model = LukeForTokenClassification.from_pretrained(pretrained_model_name_or_path='studio-ousia/luke-large-finetuned-conll-2003')
+word_list = [i for i in text.split(' ')]
+print(word_list)

@@ -37,3 +37,36 @@ class ModelProcessor:
         return model, tokenizer
 
 
+class Inference:
+    def __init__(self, model_name_or_path):
+        self.tokenizer = LukeTokenizer.from_pretrained(model_name_or_path)
+        self.model = LukeForTokenClassification.from_pretrained(model_name_or_path)
+
+    def infer(self, text):
+        start_position, end_position = [], []
+
+        word_list = [i for i in text.split(' ')]
+        for i in range(len(word_list)):
+            ind = text.find(word_list[i])
+            start_position.append(ind)
+            end_position.append(ind + len(word_list[i]) - 1)
+
+        entity_spans = []
+        for i, start_pos in enumerate(start_position):
+            for end_pos in end_position[i:]:
+                entity_spans.append((start_pos, end_pos))
+
+        inputs = self.tokenizer(text, entity_spans=entity_spans, return_tensors="pt")
+        outputs = self.model(inputs['input_ids'],
+                             inputs['attention_mask'],
+                             inputs['entity_ids'],
+                             inputs['entity_position_ids'],
+                             inputs['entity_attention_mask']
+                             )
+        logits = outputs.logits
+        predicted_class_indices = logits.argmax(-1).squeeze().tolist()
+        for span, predicted_class_idx in zip(entity_spans, predicted_class_indices):
+            if predicted_class_idx != 0:
+                print(text[span[0]: span[1]], self.model.config.id2label[predicted_class_idx])
+
+
