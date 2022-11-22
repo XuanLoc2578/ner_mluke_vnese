@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="527d37a0-072e-4f01-9fa9-ec3554a11b33" name="Changes" comment="" />
+    <list default="true" id="527d37a0-072e-4f01-9fa9-ec3554a11b33" name="Changes" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/ner_mluke/mymodel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ner_mluke/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mounts/dataset/dev_git.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mounts/dataset/test_git.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mounts/dataset/train_git.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ner_mluke/feature_compress.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/feature_compress.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ner_mluke/mydataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/mydataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ner_mluke/run_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/run_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ner_mluke/training_arguments.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/training_arguments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_train.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_train.sh" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +28,20 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Xuan Loc Nguyen &lt;xuanloc2578.ptit@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="6aa157e31bccc84b36a2002de3786b1ac9299f4c" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/anaconda3/envs/ner_mluke_vnese/lib/python3.7/site-packages/transformers/models/luke/tokenization_luke.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -31,11 +57,64 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/nxloc/PycharmProjects_clone/ner_mluke_vnese",
+    "last_opened_file_path": "/home/nxloc/PycharmProjects_clone/QAG_Pegasus",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mounts/model/mluke/models--studio-ousia--luke-large-finetuned-conll-2003-20221121T085008Z-001/models--studio-ousia--luke-large-finetuned-conll-2003/snapshots/23dbd7b4e1d28e07470f63d79cd206fe15a23b25" />
+      <recent name="$PROJECT_DIR$/mounts/model/mluke/models--studio-ousia--luke-large-finetuned-conll-2003-20221121T085008Z-001" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.test">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ner_mluke_vnese" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ner_mluke" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ner_mluke/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="run_train.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/run_train.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.test" />
+        <item itemvalue="Shell Script.run_train.sh" />
+        <item itemvalue="Shell Script.run_train.sh" />
+        <item itemvalue="Shell Script.run_train.sh" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -45,8 +124,32 @@
       <option name="presentableId" value="Default" />
       <updated>1668996882461</updated>
       <workItem from="1668996885286" duration="36000" />
-      <workItem from="1668997053090" duration="1164000" />
+      <workItem from="1668997053090" duration="9008000" />
+      <workItem from="1669019292903" duration="8462000" />
+      <workItem from="1669079711460" duration="13307000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1668998330918</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668998330918</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Initial commit">
+      <created>1668998450966</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1668998450966</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Initial commit">
+      <created>1668998479402</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668998479402</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -62,5 +165,23 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ner_mluke_vnese$test.coverage" NAME="test Coverage Results" MODIFIED="1669081047651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ner_mluke" />
   </component>
 </project>
