@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="527d37a0-072e-4f01-9fa9-ec3554a11b33" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/ner_mluke/mymodel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ner_mluke/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mounts/dataset/dev_git.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mounts/dataset/test_git.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mounts/dataset/train_git.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ner_mluke/feature_compress.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/feature_compress.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ner_mluke/mydataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/mydataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ner_mluke/run_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/run_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ner_mluke/training_arguments.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/training_arguments.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run_train.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_train.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +118,7 @@
       <workItem from="1668996885286" duration="36000" />
       <workItem from="1668997053090" duration="9008000" />
       <workItem from="1669019292903" duration="8462000" />
-      <workItem from="1669079711460" duration="13307000" />
+      <workItem from="1669079711460" duration="16710000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1668998330918</created>
@@ -149,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668998479402</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Initial commit">
+      <created>1669104098232</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669104098232</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

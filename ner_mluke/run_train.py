@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-# import tqdm
+import tqdm
 
 import torch
 import torch.optim as optim
@@ -27,8 +27,8 @@ def main():
     model_processor = ModelProcessor()
     model, tokenizer = model_processor.model_and_tokenizer(model_args=model_args)
 
-    print('*'*80)
-    print('dev_dataset_file: {}'.format(data_args.dev_dataset_file))
+    # print('*'*80)
+    # print('dev_dataset_file: {}'.format(data_args.dev_dataset_file))
 
     data_processor = DataProcessor()
     train_dataloader = data_processor.dataloader(tokenizer=tokenizer,
@@ -43,7 +43,7 @@ def main():
     model.train()
 
     for epoch in range(epochs):
-        for step, train_batch in enumerate(train_dataloader[0]):
+        for step, train_batch in enumerate(train_dataloader):
             train_input_ids, train_attention_mask, train_entity_ids, train_entity_position_ids, train_entity_attention_mask, train_label_id = train_batch
 
             train_input_ids = torch.tensor(train_input_ids, dtype=torch.long)
