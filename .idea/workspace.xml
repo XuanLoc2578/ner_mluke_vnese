@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="527d37a0-072e-4f01-9fa9-ec3554a11b33" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/ner_mluke/mymodel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ner_mluke/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mounts/dataset/dev_git.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mounts/dataset/test_git.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mounts/dataset/train_git.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ner_mluke/feature_compress.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/feature_compress.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ner_mluke/mydataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/mydataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ner_mluke/run_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/run_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ner_mluke/training_arguments.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/training_arguments.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_train.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_train.sh" afterDir="false" />
-    </list>
+    <list default="true" id="527d37a0-072e-4f01-9fa9-ec3554a11b33" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,16 +39,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/nxloc/PycharmProjects_clone/QAG_Pegasus",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nxloc/PycharmProjects_clone/QAG_Pegasus&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/mounts/model/mluke/models--studio-ousia--luke-large-finetuned-conll-2003-20221121T085008Z-001/models--studio-ousia--luke-large-finetuned-conll-2003/snapshots/23dbd7b4e1d28e07470f63d79cd206fe15a23b25" />
@@ -182,6 +169,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ner_mluke_vnese$test.coverage" NAME="test Coverage Results" MODIFIED="1669081047651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ner_mluke" />
+    <SUITE FILE_PATH="coverage/ner_mluke_vnese$test.coverage" NAME="test Coverage Results" MODIFIED="1669113229155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ner_mluke" />
   </component>
 </project>
