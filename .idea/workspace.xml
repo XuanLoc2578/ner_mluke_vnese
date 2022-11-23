@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="527d37a0-072e-4f01-9fa9-ec3554a11b33" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/ner_mluke/inference.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run_train_model.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ner_mluke/mymodel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ner_mluke/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mounts/dataset/dev_git.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mounts/dataset/test_git.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mounts/dataset/train_git.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ner_mluke/feature_compress.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/feature_compress.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ner_mluke/mydataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/mydataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ner_mluke/mymodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/mymodel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ner_mluke/run_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/run_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ner_mluke/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ner_mluke/training_arguments.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/training_arguments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run_train.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_train.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +24,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -54,7 +57,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/nxloc/PycharmProjects_clone/ner_mluke_vnese",
+    "last_opened_file_path": "/home/nxloc/PycharmProjects_clone/QAG_Pegasus",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
@@ -123,10 +126,7 @@
       <workItem from="1668996885286" duration="36000" />
       <workItem from="1668997053090" duration="9008000" />
       <workItem from="1669019292903" duration="8462000" />
-      <workItem from="1669079711460" duration="18066000" />
-      <workItem from="1669109612197" duration="918000" />
-      <workItem from="1669111235946" duration="3642000" />
-      <workItem from="1669168213558" duration="89000" />
+      <workItem from="1669079711460" duration="13307000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1668998330918</created>
@@ -149,21 +149,7 @@
       <option name="project" value="LOCAL" />
       <updated>1668998479402</updated>
     </task>
-    <task id="LOCAL-00004" summary="Initial commit">
-      <created>1669104098232</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1669104098232</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Initial commit">
-      <created>1669107898167</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1669107898167</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +182,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ner_mluke_vnese$test.coverage" NAME="test Coverage Results" MODIFIED="1669113229155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ner_mluke" />
+    <SUITE FILE_PATH="coverage/ner_mluke_vnese$test.coverage" NAME="test Coverage Results" MODIFIED="1669081047651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ner_mluke" />
   </component>
 </project>

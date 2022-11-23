@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import DataLoader as DataLoader, TensorDataset
 
 # import training_arguments
-# from feature_compress import FeatureExtracted
+from feature_compress import FeatureExtracted
 
 
 class DataProcessor:
@@ -53,7 +53,6 @@ class DataProcessor:
         documents = self.load_documents(dataset_file=dataset_file)
         examples = self.load_examples(documents=documents, tokenizer=tokenizer)
         final_tag_list = self.create_tag_list(documents=documents, examples=examples)
-        final_span_list = self.create_span_list(examples=examples)
         label_id_list = self.create_label_id(
             examples=examples,
             tag_list=final_tag_list,
@@ -62,7 +61,7 @@ class DataProcessor:
             max_seq_length=max_seq_length
         )
 
-        params_list = self.create_list_params(examples=examples, span_list=final_span_list, max_seq_length=max_seq_length, tokenizer=tokenizer)
+        params_list = self.create_list_params(examples=examples, max_seq_length=max_seq_length, tokenizer=tokenizer)
         dataloader = self.create_dataloader(params_list=params_list,
                                             label_id_tensor=label_id_list,
                                             batch_size=batch_size,
@@ -229,44 +228,20 @@ class DataProcessor:
 
         return final_tag_list
 
-    def create_span_list(self, examples):
-        final_word_list = []
-        for i in range(len(examples)):
-            final_word_list.append(examples[i]["words"])
-
-        final_span_list = []
-
-        for i in range(len(final_word_list)):
-            tmp_sen = ' '.join(final_word_list[i])
-            start_pos = []
-            end_pos = []
-
-            for j in range(len(final_word_list[i])):
-                tmp_ind = tmp_sen.find(final_word_list[i][j])
-                start_pos.append(tmp_ind)
-                end_pos.append(tmp_ind + len(final_word_list[i][j]) - 1)
-
-            entity_span = []
-            for j, s_pos in enumerate(start_pos):
-                for e_pos in end_pos[j:]:
-                    entity_span.append((s_pos, e_pos))
-
-            final_span_list.append(entity_span)
-
-        return final_span_list
-
-    def create_list_params(self, examples, span_list, max_seq_length, tokenizer):
+    def create_list_params(self, examples, max_seq_length, tokenizer):
         list_input_ids, list_attention_mask, list_entity_ids, list_entity_position_ids, list_entity_attention_mask = [], [], [], [], []
 
         for i in range(len(examples)):
+            # print('text: {} \n espan: {}'.format(' '.join(examples[i]["words"]), len(examples[i]["entity_spans"])))
+            # break
             source_encoding = tokenizer(
                 text=' '.join(examples[i]["words"]),
-                entity_spans=span_list[i],
+                entity_spans=examples[i]["entity_spans"],
                 max_length=max_seq_length,
                 padding='max_length',
-                truncation=True,
-                return_attention_mask=True,
-                add_special_tokens=True
+                truncation=True
+                # return_attention_mask=True
+                # add_special_tokens=True
                 # return_tensors="pt"
             )
 
@@ -286,13 +261,13 @@ class DataProcessor:
         list_entity_position_ids_tensor = torch.tensor([f for f in list_entity_position_ids])
         list_entity_attention_mask_tensor = torch.tensor([f for f in list_entity_attention_mask])
 
-        list_params = [
+        list_params = FeatureExtracted(
             list_input_ids_tensor,
             list_attention_mask_tensor,
             list_entity_ids_tensor,
             list_entity_position_ids_tensor,
             list_entity_attention_mask_tensor
-        ]
+        )
         return list_params
 
     def create_label_id(self, examples, tag_list, custom_label2id, max_seq_length, tokenizer):
