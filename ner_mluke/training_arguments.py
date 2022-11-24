@@ -120,6 +120,13 @@ class DataArguments:
         }
     )
 
+    save_dir: Optional[str] = field(
+        default=None,
+        metadata={
+            "help": "Path to saved model and loss checkpoint"
+        }
+    )
+
 
 
 ## TODO split model args and data args: __done

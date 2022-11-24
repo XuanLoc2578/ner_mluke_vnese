@@ -4,9 +4,6 @@ import unicodedata
 import torch
 from torch.utils.data import DataLoader as DataLoader, TensorDataset
 
-# import training_arguments
-from feature_compress import FeatureExtracted
-
 
 class DataProcessor:
     def read_file(self, data_args):
@@ -342,4 +339,3 @@ class DataProcessor:
         dataloader = DataLoader(dataset, batch_size=batch_size, num_workers=num_workers)
 
         return dataloader
-

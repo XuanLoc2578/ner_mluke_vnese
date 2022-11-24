@@ -1,6 +1,6 @@
 import transformers
 from transformers import LukeForTokenClassification, LukeTokenizer, AutoConfig
-import training_arguments
+# from training_arguments import Tra
 
 
 class ModelProcessor:
@@ -8,9 +8,6 @@ class ModelProcessor:
         pretrained_model_name_or_path = model_args.pretrained_model_name_or_path
         custom_config = self.custom_model_config(pretrained_model_name_or_path)
         model, tokenizer = self.load_pretrained_model(pretrained_model_name_or_path, custom_config)
-
-        # print('*'*80)
-        # print('pretrained_model_name_or_path: {}'.format(pretrained_model_name_or_path))
 
         return model, tokenizer
 
@@ -27,6 +24,16 @@ class ModelProcessor:
                                   'I-ORG': 7,
                                   'I-LOC': 8
                                   }
+        custom_config.id2label = {0: 'O',
+                                  1: 'B-PER',
+                                  2: 'I-PER',
+                                  3: 'B-MISC',
+                                  4: 'I-MISC',
+                                  5: 'B-LOC',
+                                  6: 'B-ORG',
+                                  7: 'I-ORG',
+                                  8: 'I-LOC'
+                                  }
 
         return custom_config
 
@@ -38,11 +45,14 @@ class ModelProcessor:
 
 
 class Inference:
-    def __init__(self, model_name_or_path):
-        self.tokenizer = LukeTokenizer.from_pretrained(model_name_or_path)
-        self.model = LukeForTokenClassification.from_pretrained(model_name_or_path)
+    def __init__(self, model_args):
+        # pretrained_model_name_or_path = model_args.pretrained_model_name_or_path
+        self.model_args = model_args
+        model_processor = ModelProcessor()
+        # custom_config = model_processor.custom_model_config(self.model_args.pretrained_model_name_or_path)
+        self.model, self.tokenizer = model_processor.model_and_tokenizer(model_args=self.model_args)
 
-    def infer(self, text):
+    def prepare_inputs(self, text):
         start_position, end_position = [], []
 
         word_list = [i for i in text.split(' ')]
@@ -56,6 +66,10 @@ class Inference:
             for end_pos in end_position[i:]:
                 entity_spans.append((start_pos, end_pos))
 
+        return entity_spans
+
+    def infer(self, text):
+        entity_spans = self.prepare_inputs(text=text)
         inputs = self.tokenizer(text, entity_spans=entity_spans, return_tensors="pt")
         outputs = self.model(inputs['input_ids'],
                              inputs['attention_mask'],
@@ -68,5 +82,3 @@ class Inference:
         for span, predicted_class_idx in zip(entity_spans, predicted_class_indices):
             if predicted_class_idx != 0:
                 print(text[span[0]: span[1]], self.model.config.id2label[predicted_class_idx])
-
-

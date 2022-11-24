@@ -1,18 +1,21 @@
 import matplotlib.pyplot as plt
-import tqdm
+import random
+# import tqdm
 
 import torch
 import torch.optim as optim
+import logging
 # from torch import nn
 # from torch.nn import CrossEntropyLoss
 from torch.optim.lr_scheduler import ReduceLROnPlateau
-# import transformers
-# from transformers import LukeForTokenClassification
+
 from transformers.hf_argparser import HfArgumentParser
 
 from training_arguments import ModelArguments, DataArguments
 from mydataset import DataProcessor
 from mymodel import ModelProcessor
+
+logger = logging.getLogger(__name__)
 
 
 def main():
@@ -27,9 +30,6 @@ def main():
     model_processor = ModelProcessor()
     model, tokenizer = model_processor.model_and_tokenizer(model_args=model_args)
 
-    # print('*'*80)
-    # print('dev_dataset_file: {}'.format(data_args.dev_dataset_file))
-
     data_processor = DataProcessor()
     train_dataloader = data_processor.dataloader(tokenizer=tokenizer,
                                                  model_args=model_args,
@@ -38,6 +38,8 @@ def main():
 
     optimizer = optim.SGD(model.parameters(), lr=lr, momentum=0.9)
     scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.1, verbose=True)
+
+    random.seed(42)
 
     train_loss_list = []
     model.train()
@@ -73,11 +75,17 @@ def main():
             if step % 50 == 49:
                 print('training loss: ', train_loss_list[-1], '   step: ', step, '   epoch: ', epoch + 1)
 
+        torch.save({
+            'epoch': epoch,
+            'model_state_dict': model.state_dict(),
+            'optimizer_state_dict': optimizer.state_dict(),
+            'loss': train_loss,
+        }, data_args.save_dir)
+
+    for i in train_loss_list:
+        print(i)
     plt.plot(train_loss_list)
     plt.show()
-
-
-
 
 
 if __name__ == '__main__':
