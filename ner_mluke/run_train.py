@@ -1,12 +1,9 @@
 import matplotlib.pyplot as plt
 import random
-# import tqdm
 
 import torch
 import torch.optim as optim
 import logging
-# from torch import nn
-# from torch.nn import CrossEntropyLoss
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 
 from transformers.hf_argparser import HfArgumentParser
@@ -19,6 +16,8 @@ logger = logging.getLogger(__name__)
 
 
 def main():
+    torch.manual_seed(42)
+
     parser = HfArgumentParser(
         (ModelArguments, DataArguments)
     )
@@ -38,8 +37,6 @@ def main():
 
     optimizer = optim.SGD(model.parameters(), lr=lr, momentum=0.9)
     scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.1, verbose=True)
-
-    random.seed(42)
 
     train_loss_list = []
     model.train()
@@ -75,17 +72,16 @@ def main():
             if step % 50 == 49:
                 print('training loss: ', train_loss_list[-1], '   step: ', step, '   epoch: ', epoch + 1)
 
+        path = '{}/checkpoint_{}.pt'.format(data_args.save_dir, epoch)
+
         torch.save({
-            'epoch': epoch,
             'model_state_dict': model.state_dict(),
-            'optimizer_state_dict': optimizer.state_dict(),
-            'loss': train_loss,
-        }, data_args.save_dir)
+        }, path)
 
     for i in train_loss_list:
         print(i)
-    plt.plot(train_loss_list)
-    plt.show()
+    # plt.plot(train_loss_list)
+    # plt.show()
 
 
 if __name__ == '__main__':

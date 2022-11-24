@@ -46,10 +46,8 @@ class ModelProcessor:
 
 class Inference:
     def __init__(self, model_args):
-        # pretrained_model_name_or_path = model_args.pretrained_model_name_or_path
         self.model_args = model_args
         model_processor = ModelProcessor()
-        # custom_config = model_processor.custom_model_config(self.model_args.pretrained_model_name_or_path)
         self.model, self.tokenizer = model_processor.model_and_tokenizer(model_args=self.model_args)
 
     def prepare_inputs(self, text):
