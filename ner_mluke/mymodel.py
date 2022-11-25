@@ -1,6 +1,4 @@
-import transformers
 from transformers import LukeForTokenClassification, LukeTokenizer, AutoConfig
-# from training_arguments import Tra
 
 
 class ModelProcessor:
@@ -45,7 +43,7 @@ class ModelProcessor:
 
 
 class Inference:
-    def __init__(self, model_args):
+    def __init__(self, model_args, custom_config):
         self.model_args = model_args
         model_processor = ModelProcessor()
         self.model, self.tokenizer = model_processor.model_and_tokenizer(model_args=self.model_args)

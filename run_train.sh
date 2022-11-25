@@ -8,8 +8,8 @@ python ner_mluke/run_train.py \
     --dev_dataset_file mounts/dataset/written_dev_git.txt \
     --test_dataset_file mounts/dataset/written_test_git.txt \
     --max_seq_length=256 \
-    --epochs=1 \
-    --batch_size=4 \
+    --epochs=3 \
+    --batch_size=2 \
     --num_workers=2 \
     --lr=0.00005
 #    --output_dir \
