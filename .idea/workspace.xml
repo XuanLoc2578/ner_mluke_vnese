@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="527d37a0-072e-4f01-9fa9-ec3554a11b33" name="Changes" comment="Initial commit" />
+    <list default="true" id="527d37a0-072e-4f01-9fa9-ec3554a11b33" name="Changes" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ner_mluke/inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/inference.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ner_mluke/mydataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/mydataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ner_mluke/mymodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/mymodel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ner_mluke/run_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/run_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ner_mluke/training_arguments.py" beforeDir="false" afterPath="$PROJECT_DIR$/ner_mluke/training_arguments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_train.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data.txt" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,16 +51,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/nxloc/PycharmProjects_clone/QAG_Pegasus&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/nxloc/PycharmProjects_clone/ner_mluke_vnese (copy)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -57,6 +69,28 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.test">
+    <configuration name="mymodel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ner_mluke_vnese" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ner_mluke" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ner_mluke/mymodel.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ner_mluke_vnese" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -97,6 +131,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.mymodel" />
         <item itemvalue="Shell Script.run_train.sh" />
         <item itemvalue="Shell Script.run_train.sh" />
         <item itemvalue="Shell Script.run_train.sh" />
@@ -115,6 +150,18 @@
       <workItem from="1668997053090" duration="9008000" />
       <workItem from="1669019292903" duration="8462000" />
       <workItem from="1669079711460" duration="13307000" />
+      <workItem from="1669187685546" duration="1896000" />
+      <workItem from="1669190750150" duration="6649000" />
+      <workItem from="1669199801248" duration="14000" />
+      <workItem from="1669253803356" duration="12026000" />
+      <workItem from="1669274742994" duration="3215000" />
+      <workItem from="1669363018100" duration="2980000" />
+      <workItem from="1669597582843" duration="1723000" />
+      <workItem from="1669628195631" duration="2527000" />
+      <workItem from="1669684976067" duration="328000" />
+      <workItem from="1669687639179" duration="13608000" />
+      <workItem from="1669771279111" duration="1683000" />
+      <workItem from="1669773552177" duration="6799000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1668998330918</created>
@@ -172,7 +219,42 @@
       <option name="project" value="LOCAL" />
       <updated>1669174380910</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Initial commit">
+      <created>1669174916135</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1669174916135</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Initial commit">
+      <created>1669275082455</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1669275082455</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Initial commit">
+      <created>1669280117629</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1669280117629</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Initial commit">
+      <created>1669363147891</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1669363147891</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Initial commit">
+      <created>1669629089286</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1669629089286</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +287,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ner_mluke_vnese$test.coverage" NAME="test Coverage Results" MODIFIED="1669113229155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ner_mluke" />
+    <SUITE FILE_PATH="coverage/ner_mluke_vnese$mymodel.coverage" NAME="mymodel Coverage Results" MODIFIED="1669191900332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ner_mluke" />
+    <SUITE FILE_PATH="coverage/ner_mluke_vnese$test.coverage" NAME="test Coverage Results" MODIFIED="1669714091242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ner_mluke" />
   </component>
 </project>

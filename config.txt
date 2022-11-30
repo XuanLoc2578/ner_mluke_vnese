@@ -1,0 +1,14 @@
+studio-ousia/luke-large-finetuned-conll-2003  | #pretrained_model_name_or_path
+mounts/model/mluke                              #cache_dir
+256                                             #max_seq_length
+0.00005                                         #lr
+3                                               #epochs
+2                                               #batch_size
+2                                               #num_workers
+9                                               #num_labels
+mounts/dataset/dev_git.csv                      #read_file_dir
+mounts/dataset/written_dev_git.txt              #write_file_dir
+mounts/dataset/written_train_git.txt            #train_dataset_file
+mounts/dataset/written_dev_git.txt              #dev_dataset_file
+mounts/dataset/written_test_git.txt             #test_dataset_file
+mounts/checkpoint/                              #save_dir

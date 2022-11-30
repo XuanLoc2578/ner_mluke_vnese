@@ -1,10 +1,10 @@
-from mymodel import Inference
-
-model_name_or_path = None
-inference = Inference(model_name_or_path=model_name_or_path)
-
-text = ""
-inference.infer(text)
+# from mymodel import Inference
+#
+# model_name_or_path = None
+# inference = Inference(model_name_or_path=model_name_or_path)
+#
+# text = ""
+# inference.infer(text)
 
 
 

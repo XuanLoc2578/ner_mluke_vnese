@@ -6,9 +6,18 @@ from torch.utils.data import DataLoader as DataLoader, TensorDataset
 
 
 class DataProcessor:
-    def read_file(self, data_args):
-        read_file_dir = data_args.read_file_dir
-        with open(read_file_dir, 'r+') as f:
+    def __init__(self, config_dir):
+        with open(config_dir, 'r+') as f:
+            lines = f.readlines()
+
+        self.max_seq_length = int(lines[2])
+        self.batch_size = int(lines[5])
+        self.num_workers = int(lines[6])
+        self.read_file_dir = lines[8]
+        self.write_file_dir = lines[9]
+
+    def read_file(self):
+        with open(self.read_file_dir, 'r+') as f:
             lines = f.readlines()
 
         text = '-DOCSTART-\t-X-\t-X-\tO\n\n'
@@ -23,19 +32,15 @@ class DataProcessor:
 
         return lines
 
-    def write_file(self, data_args):
-        write_file_dir = data_args.write_file_dir
-        lines = self.read_file(data_args.read_file_dir)
+    def write_file(self):
+        lines = self.read_file(self.read_file_dir)
 
-        if write_file_dir is not None:
-            with open(write_file_dir, 'w') as f:
+        if self.write_file_dir is not None:
+            with open(self.write_file_dir, 'w') as f:
                 for line in lines:
                     f.write(f"{line}")
 
-    def dataloader(self, tokenizer, model_args, dataset_file):
-        max_seq_length = model_args.max_seq_length
-        batch_size = model_args.batch_size
-        num_workers = model_args.num_workers
+    def dataloader(self, tokenizer, dataset_file):
         custom_label2id = {'O': 0,
                            'B-PER': 1,
                            'I-PER': 2,
@@ -51,20 +56,23 @@ class DataProcessor:
         examples = self.load_examples(documents=documents, tokenizer=tokenizer)
         final_tag_list = self.create_tag_list(documents=documents, examples=examples)
         final_span_list = self.create_span(examples=examples)
-        label_id_list = self.create_label_id(
-            examples=examples,
-            tag_list=final_tag_list,
-            custom_label2id=custom_label2id,
-            tokenizer=tokenizer,
-            max_seq_length=max_seq_length
-        )
-
-        params_list = self.create_list_params(examples=examples, span_list=final_span_list, max_seq_length=max_seq_length, tokenizer=tokenizer)
+        params_list = self.create_list_params(examples=examples,
+                                              span_list=final_span_list,
+                                              max_seq_length=self.max_seq_length,
+                                              tokenizer=tokenizer
+                                              )
+        label_id_list = self.create_label_id(examples=examples,
+                                             tag_list=final_tag_list,
+                                             custom_label2id=custom_label2id,
+                                             tokenizer=tokenizer,
+                                             max_seq_length=self.max_seq_length
+                                             )
         dataloader = self.create_dataloader(params_list=params_list,
                                             label_id_tensor=label_id_list,
-                                            batch_size=batch_size,
-                                            num_workers=num_workers
+                                            batch_size=self.batch_size,
+                                            num_workers=self.num_workers
                                             )
+
         return dataloader
 
     def load_documents(self, dataset_file):
@@ -255,8 +263,6 @@ class DataProcessor:
         list_input_ids, list_attention_mask, list_entity_ids, list_entity_position_ids, list_entity_attention_mask = [], [], [], [], []
 
         for i in range(len(examples)):
-            # print('text: {} \n espan: {}'.format(' '.join(examples[i]["words"]), len(examples[i]["entity_spans"])))
-            # break
             source_encoding = tokenizer(
                 text=' '.join(examples[i]["words"]),
                 entity_spans=span_list[i],

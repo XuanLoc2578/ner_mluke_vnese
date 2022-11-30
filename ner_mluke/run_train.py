@@ -1,14 +1,8 @@
-import matplotlib.pyplot as plt
-import random
-
 import torch
 import torch.optim as optim
 import logging
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 
-from transformers.hf_argparser import HfArgumentParser
-
-from training_arguments import ModelArguments, DataArguments
 from mydataset import DataProcessor
 from mymodel import ModelProcessor
 
@@ -16,28 +10,28 @@ logger = logging.getLogger(__name__)
 
 
 def main():
+    config_dir = '/home/nxloc/PycharmProjects_clone/ner_mluke_vnese (copy)/config.txt'
+    with open(config_dir, 'r+') as f:
+        lines = f.readlines()
+
+    lr = float(lines[3])
+    epochs = int(lines[4])
+    train_dataset_file = lines[10]
+    dev_dataset_file = lines[11]
+    save_dir = lines[13]
+
     torch.manual_seed(42)
 
-    parser = HfArgumentParser(
-        (ModelArguments, DataArguments)
-    )
-    model_args, data_args = parser.parse_args_into_dataclasses()
+    model_processor = ModelProcessor(config_dir=config_dir)
+    model, tokenizer = model_processor.model_and_tokenizer()
 
-    lr = model_args.lr
-    epochs = model_args.epochs
-
-    model_processor = ModelProcessor()
-    model, tokenizer = model_processor.model_and_tokenizer(model_args=model_args)
-
-    data_processor = DataProcessor()
+    data_processor = DataProcessor(config_dir=config_dir)
     train_dataloader = data_processor.dataloader(tokenizer=tokenizer,
-                                                 model_args=model_args,
-                                                 dataset_file=data_args.train_dataset_file
+                                                 dataset_file=train_dataset_file
                                                  )
     val_dataloader = data_processor.dataloader(tokenizer=tokenizer,
-                                                 model_args=model_args,
-                                                 dataset_file=data_args.dev_dataset_file
-                                                 )
+                                               dataset_file=dev_dataset_file
+                                               )
 
     optimizer = optim.SGD(model.parameters(), lr=lr, momentum=0.9)
     scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.1, verbose=True)
@@ -75,7 +69,7 @@ def main():
             if step % 1000 == 999:
                 print(" * train loss: {}, step: {}, epoch: {}".format(train_loss_list[-1], step, epoch + 1))
 
-        path = '{}/checkpoint_{}.pt'.format(data_args.save_dir, epoch)
+        path = '{}/checkpoint_{}.pt'.format(save_dir, epoch)
 
         torch.save({
             'model_state_dict': model.state_dict(),

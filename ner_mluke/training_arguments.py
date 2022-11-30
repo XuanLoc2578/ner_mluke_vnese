@@ -64,23 +64,6 @@ class ModelArguments:
         },
     )
 
-    # custom_label2id: Optional[dict] = field(
-    #     default=dict(
-    #         O= 0,
-    #         B-PER= 1,
-    #         I-PER= 2,
-    #         B-MISC= 3,
-    #         I-MISC= 4,
-    #         B-LOC= 5,
-    #         B-ORG= 6,
-    #         I-LOC= 8,
-    #         I-ORG= 7
-    #     ),
-    #     metadata={
-    #         "help": "List of label and corresponding id"
-    #     }
-    # )
-
 
 @dataclass
 class DataArguments:
@@ -131,4 +114,4 @@ class DataArguments:
 
 ## TODO split model args and data args: __done
 ## -model args: name, cache_dir, max_seq_len, lr, epochs, batch_size, num_labels, num_workers
-## -dataa args: path_to_3_type_folders **/files (train, dev, test)
+## -data args: path_to_3_type_folders **/files (train, dev, test)
