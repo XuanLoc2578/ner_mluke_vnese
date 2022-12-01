@@ -1,14 +1,15 @@
+import json
 from transformers import LukeForTokenClassification, LukeTokenizer, AutoConfig
 
 
 class ModelProcessor:
     def __init__(self, config_dir):
-        with open(config_dir, 'r+') as f:
-            lines = f.readlines()
+        with open(config_dir, 'r') as openfile:
+            json_object = json.load(openfile)
 
-        self.pretrained_model_name_or_path = lines[0]
-        self.cache_dir = lines[1]
-        self.num_labels = int(lines[7])
+        self.pretrained_model_name_or_path = json_object["pretrained_model_name_or_path"]
+        self.cache_dir = json_object["cache_dir"]
+        self.num_labels = json_object["num_labels"]
 
     def model_and_tokenizer(self):
         custom_config = self.custom_model_config(self.pretrained_model_name_or_path)

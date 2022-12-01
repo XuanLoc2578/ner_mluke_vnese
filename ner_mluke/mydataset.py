@@ -1,5 +1,5 @@
 import tqdm
-import unicodedata
+import unicodedata, json
 
 import torch
 from torch.utils.data import DataLoader as DataLoader, TensorDataset
@@ -7,14 +7,14 @@ from torch.utils.data import DataLoader as DataLoader, TensorDataset
 
 class DataProcessor:
     def __init__(self, config_dir):
-        with open(config_dir, 'r+') as f:
-            lines = f.readlines()
+        with open(config_dir, 'r') as openfile:
+            json_object = json.load(openfile)
 
-        self.max_seq_length = int(lines[2])
-        self.batch_size = int(lines[5])
-        self.num_workers = int(lines[6])
-        self.read_file_dir = lines[8]
-        self.write_file_dir = lines[9]
+        self.max_seq_length = json_object["max_seq_length"]
+        self.batch_size = json_object["batch_size"]
+        self.num_workers = json_object["num_workers"]
+        self.read_file_dir = json_object["read_file_dir"]
+        self.write_file_dir = json_object["write_file_dir"]
 
     def read_file(self):
         with open(self.read_file_dir, 'r+') as f:
