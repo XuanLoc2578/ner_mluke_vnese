@@ -12,8 +12,8 @@ logger = logging.getLogger(__name__)
 
 
 def main():
-    # config_dir = '/home/nxloc/PycharmProjects_clone/ner_mluke_vnese (copy)/config.json'
-    config_dir = '/config.json'
+    config_dir = '/home/vnpt/dir/config.json'
+    # config_dir = '/config.json'
     with open(config_dir, 'r') as openfile:
         json_object = json.load(openfile)
 
@@ -22,7 +22,6 @@ def main():
     train_dataset_file = json_object["train_dataset_file"]
     dev_dataset_file = json_object["dev_dataset_file"]
     save_dir = json_object["save_dir"]
-    print("dev_dataset_file: {}".format(dev_dataset_file))
 
     torch.manual_seed(42)
 
