@@ -40,9 +40,6 @@ Run echo "source activate vnpt" > ~/.bashrc
 ENV PATH /opt/conda/envs/vnpt/bin:$PATH
 
 #run!!!
-#COPY config.json /config.json
-#Run /bin/bash -c "source activate vnpt"
-
 COPY setup.py /setup.py
 Run /bin/bash -c "source activate vnpt"
 
@@ -51,7 +48,8 @@ Run /bin/bash -c "source activate vnpt && \
     pip install -r requirements.txt"
 
 Run /bin/bash -c "source activate vnpt && \
-    python setup.py build_ext && pip3 install ."
+    python setup.py build_ext && \
+    pip3 install ."
 
 ADD mounts /mounts
 ADD ner_mluke /ner_mluke
@@ -62,17 +60,7 @@ RUN /bin/bash -c "source activate vnpt && \
 	
 WORKDIR /ner_mluke
 
-COPY ner_mluke/run_train.py /run_train.py
 Run /bin/bash -c "source activate vnpt"
 
-#COPY mounts/dataset/written_dev_git.txt /written_dev_git.txt
-#Run /bin/bash -c "source activate vnpt"
-
-#COPY mounts/checkpoint/ /checkpoint/
-#Run /bin/bash -c "source activate vnpt"
-
-#COPY mounts/model/mluke /mluke
-#Run /bin/bash -c "source activate vnpt"
-
-CMD ["sh", "-c", "PYTHONIOENCODING='UTF-8' /bin/bash -c 'source activate vnpt && python run_train.py'"]
+CMD ["sh", "-c", "PYTHONIOENCODING='UTF-8' /bin/bash -c 'source activate vnpt && python ner_mluke/run_train.py'"]
 

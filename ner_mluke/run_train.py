@@ -16,7 +16,6 @@ def main():
     # config_dir = '/config.json'
     with open(config_dir, 'r') as openfile:
         json_object = json.load(openfile)
-        print("json_object: {}".format(json_object))
 
     lr = json_object["lr"]
     epochs = json_object["epochs"]
