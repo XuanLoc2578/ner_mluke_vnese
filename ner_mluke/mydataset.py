@@ -76,6 +76,7 @@ class DataProcessor:
         return dataloader
 
     def load_documents(self, dataset_file):
+        print("Loading document")
         line = '-DOCSTART-  -X- -X-	O'
         documents = []
         words = []
@@ -114,6 +115,7 @@ class DataProcessor:
         return documents
 
     def load_examples(self, documents, tokenizer):
+        print("Loading example")
         examples = []
         max_token_length = 510
         max_mention_length = 30
@@ -216,6 +218,7 @@ class DataProcessor:
         return False
 
     def create_tag_list(self, documents, examples):
+        print("Creating list of label")
         final_word_list = []
         for i in range(len(examples)):
             final_word_list.append(examples[i]['words'])
@@ -235,6 +238,7 @@ class DataProcessor:
         return final_tag_list
 
     def create_span(self, examples):
+        print("Creating list of span")
         final_word_list = []
         for i in range(len(examples)):
             final_word_list.append(examples[i]['words'])
@@ -260,6 +264,7 @@ class DataProcessor:
         return final_span_list
 
     def create_list_params(self, examples, span_list, max_seq_length, tokenizer):
+        print("Creating list of parameters")
         list_input_ids, list_attention_mask, list_entity_ids, list_entity_position_ids, list_entity_attention_mask = [], [], [], [], []
 
         for i in range(len(examples)):
@@ -333,6 +338,7 @@ class DataProcessor:
         return label_id_tensor
 
     def create_dataloader(self, params_list, label_id_tensor, batch_size, num_workers):
+        print("Creating DataLoader")
         input_ids_tensor, attention_mask_tensor, entity_ids_tensor, entity_position_ids_tensor, entity_attention_mask_tensor = params_list
 
         dataset = TensorDataset(input_ids_tensor,

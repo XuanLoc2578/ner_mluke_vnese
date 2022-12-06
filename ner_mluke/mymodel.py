@@ -18,6 +18,7 @@ class ModelProcessor:
         return model, tokenizer
 
     def custom_model_config(self, pretrained_model_name_or_path):
+        print("Creating custom config")
         custom_config = AutoConfig.from_pretrained(pretrained_model_name_or_path=pretrained_model_name_or_path)
         custom_config.num_labels = self.num_labels
         custom_config.label2id = {'O': 0,
@@ -44,6 +45,7 @@ class ModelProcessor:
         return custom_config
 
     def load_pretrained_model(self, pretrained_model_name_or_path, custom_config, cache_dir):
+        print("Creating model and tokenizer")
         model = LukeForTokenClassification(custom_config)
         tokenizer = LukeTokenizer.from_pretrained(pretrained_model_name_or_path=pretrained_model_name_or_path, cache_dir=cache_dir)
 

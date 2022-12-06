@@ -12,10 +12,12 @@ logger = logging.getLogger(__name__)
 
 
 def main():
+    print("Loading config")
     config_dir = '/home/vnpt/dir/config.json'
     # config_dir = '/config.json'
     with open(config_dir, 'r') as openfile:
         json_object = json.load(openfile)
+        # print(json_object)
 
     lr = json_object["lr"]
     epochs = json_object["epochs"]
@@ -25,9 +27,11 @@ def main():
 
     torch.manual_seed(42)
 
+    print("Loading model and tokenizer")
     model_processor = ModelProcessor(config_dir=config_dir)
     model, tokenizer = model_processor.model_and_tokenizer()
 
+    print("Loading DataLoader")
     data_processor = DataProcessor(config_dir=config_dir)
     train_dataloader = data_processor.dataloader(tokenizer=tokenizer,
                                                  dataset_file=dev_dataset_file
@@ -41,6 +45,7 @@ def main():
 
     train_loss_list, val_loss_list = [], []
 
+    print("TRAINING!!!")
     for epoch in range(epochs):
         print('epoch {}'.format(epoch))
         model.train()
@@ -73,6 +78,7 @@ def main():
             if step % 1000 == 999:
                 print(" * train loss: {}, step: {}, epoch: {}".format(train_loss_list[-1], step, epoch + 1))
 
+        print("Saving model checkpoint")
         path = '{}/checkpoint_{}.pt'.format(save_dir, epoch)
 
         torch.save({
