@@ -51,7 +51,6 @@ Run /bin/bash -c "source activate vnpt && \
     python setup.py build_ext && \
     pip3 install ."
 
-ADD mounts /mounts
 ADD ner_mluke /ner_mluke
 
 RUN /bin/bash -c "source activate vnpt && \

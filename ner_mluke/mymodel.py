@@ -7,19 +7,19 @@ class ModelProcessor:
         with open(config_dir, 'r') as openfile:
             json_object = json.load(openfile)
 
-        self.pretrained_model_name_or_path = json_object["pretrained_model_name_or_path"]
-        self.cache_dir = json_object["cache_dir"]
+        self.model_config_dir = json_object["model_config_dir"]
+        self.model_tokenizer_dir = json_object["model_tokenizer_dir"]
         self.num_labels = json_object["num_labels"]
 
     def model_and_tokenizer(self):
-        custom_config = self.custom_model_config(self.pretrained_model_name_or_path)
-        model, tokenizer = self.load_pretrained_model(self.pretrained_model_name_or_path, custom_config, self.cache_dir)
+        custom_config = self.custom_model_config(self.model_config_dir)
+        model, tokenizer = self.load_pretrained_model(self.model_tokenizer_dir, custom_config)
 
         return model, tokenizer
 
-    def custom_model_config(self, pretrained_model_name_or_path):
+    def custom_model_config(self, model_config_dir):
         print("Creating custom config")
-        custom_config = AutoConfig.from_pretrained(pretrained_model_name_or_path=pretrained_model_name_or_path)
+        custom_config = AutoConfig.from_pretrained(pretrained_model_name_or_path=model_config_dir)
         custom_config.num_labels = self.num_labels
         custom_config.label2id = {'O': 0,
                                   'B-PER': 1,
@@ -44,10 +44,13 @@ class ModelProcessor:
 
         return custom_config
 
-    def load_pretrained_model(self, pretrained_model_name_or_path, custom_config, cache_dir):
+    def load_pretrained_model(self, model_tokenizer_dir, custom_config):
         print("Creating model and tokenizer")
         model = LukeForTokenClassification(custom_config)
-        tokenizer = LukeTokenizer.from_pretrained(pretrained_model_name_or_path=pretrained_model_name_or_path, cache_dir=cache_dir)
+        tokenizer = LukeTokenizer.from_pretrained(model_tokenizer_dir,
+                                                  local_files_only=True,
+                                                  ignore_mismatched_sizes=True
+                                                  )
 
         return model, tokenizer
 
