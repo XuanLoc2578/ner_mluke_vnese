@@ -23,6 +23,7 @@ class ModelProcessor:
     def custom_model_config(self, model_config_dir):
         print("Creating custom config")
         custom_config = AutoConfig.from_pretrained(pretrained_model_name_or_path=model_config_dir)
+
         custom_config.num_labels = self.num_labels
         custom_config.label2id = {'O': 0,
                                   'B-PER': 1,

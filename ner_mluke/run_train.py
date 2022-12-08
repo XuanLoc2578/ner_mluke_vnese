@@ -14,10 +14,8 @@ logger = logging.getLogger(__name__)
 def main():
     print("Loading config")
     config_dir = '/home/vnpt/config_dir/config.json'
-    # config_dir = '/config.json'
     with open(config_dir, 'r') as openfile:
         json_object = json.load(openfile)
-        # print(json_object)
 
     lr = json_object["lr"]
     epochs = json_object["epochs"]
