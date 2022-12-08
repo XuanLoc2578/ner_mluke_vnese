@@ -22,12 +22,16 @@ def main():
     train_dataset_file = json_object["train_dataset_file"]
     dev_dataset_file = json_object["dev_dataset_file"]
     save_dir = json_object["save_dir"]
+    cuda = json_object["cuda"]
+
+    device = torch.device(cuda if torch.cuda.is_available() else "cpu")
 
     torch.manual_seed(42)
 
     print("Loading model and tokenizer")
     model_processor = ModelProcessor(config_dir=config_dir)
     model, tokenizer = model_processor.model_and_tokenizer()
+    model.to(device)
 
     print("Loading DataLoader")
     data_processor = DataProcessor(config_dir=config_dir)
@@ -50,12 +54,12 @@ def main():
         for step, train_batch in enumerate(train_dataloader):
             train_input_ids, train_attention_mask, train_entity_ids, train_entity_position_ids, train_entity_attention_mask, train_label_id = train_batch
 
-            train_input_ids = torch.tensor(train_input_ids, dtype=torch.long)
-            train_attention_mask = torch.tensor(train_attention_mask, dtype=torch.long)
-            train_entity_ids = torch.tensor(train_entity_ids, dtype=torch.long)
-            train_entity_position_ids = torch.tensor(train_entity_position_ids, dtype=torch.long)
-            train_entity_attention_mask = torch.tensor(train_entity_attention_mask, dtype=torch.long)
-            train_label_id = torch.tensor(train_label_id, dtype=torch.long)
+            train_input_ids = torch.tensor(train_input_ids, dtype=torch.long, device=device)
+            train_attention_mask = torch.tensor(train_attention_mask, dtype=torch.long, device=device)
+            train_entity_ids = torch.tensor(train_entity_ids, dtype=torch.long, device=device)
+            train_entity_position_ids = torch.tensor(train_entity_position_ids, dtype=torch.long, device=device)
+            train_entity_attention_mask = torch.tensor(train_entity_attention_mask, dtype=torch.long, device=device)
+            train_label_id = torch.tensor(train_label_id, dtype=torch.long, device=device)
 
             optimizer.zero_grad()
 

@@ -102,7 +102,3 @@ class Inference(ModelProcessor):
         for span, predicted_class_idx in zip(entity_spans, predicted_class_indices):
             if predicted_class_idx != 0:
                 print(text[span[0]: span[1]], self.model.config.id2label[predicted_class_idx])
-
-
-
-
