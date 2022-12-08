@@ -1,4 +1,6 @@
 import json
+
+import torch
 from transformers import LukeForTokenClassification, LukeTokenizer, AutoConfig
 
 
@@ -10,6 +12,7 @@ class ModelProcessor:
         self.model_config_dir = json_object["model_config_dir"]
         self.model_tokenizer_dir = json_object["model_tokenizer_dir"]
         self.num_labels = json_object["num_labels"]
+        self.save_dir = json_object["save_dir"]
 
     def model_and_tokenizer(self):
         custom_config = self.custom_model_config(self.model_config_dir)
@@ -55,39 +58,50 @@ class ModelProcessor:
         return model, tokenizer
 
 
-# class Inference:
-#     def __init__(self, model_args, custom_config):
-#         self.model_args = model_args
-#         model_processor = ModelProcessor()
-#         self.model, self.tokenizer = model_processor.model_and_tokenizer(model_args=self.model_args)
-#
-#     def prepare_inputs(self, text):
-#         start_position, end_position = [], []
-#
-#         word_list = [i for i in text.split(' ')]
-#         for i in range(len(word_list)):
-#             ind = text.find(word_list[i])
-#             start_position.append(ind)
-#             end_position.append(ind + len(word_list[i]) - 1)
-#
-#         entity_spans = []
-#         for i, start_pos in enumerate(start_position):
-#             for end_pos in end_position[i:]:
-#                 entity_spans.append((start_pos, end_pos))
-#
-#         return entity_spans
-#
-#     def infer(self, text):
-#         entity_spans = self.prepare_inputs(text=text)
-#         inputs = self.tokenizer(text, entity_spans=entity_spans, return_tensors="pt")
-#         outputs = self.model(inputs['input_ids'],
-#                              inputs['attention_mask'],
-#                              inputs['entity_ids'],
-#                              inputs['entity_position_ids'],
-#                              inputs['entity_attention_mask']
-#                              )
-#         logits = outputs.logits
-#         predicted_class_indices = logits.argmax(-1).squeeze().tolist()
-#         for span, predicted_class_idx in zip(entity_spans, predicted_class_indices):
-#             if predicted_class_idx != 0:
-#                 print(text[span[0]: span[1]], self.model.config.id2label[predicted_class_idx])
+class Inference(ModelProcessor):
+    def __init__(self, config_dir, checkpoint_ind):
+        super().__init__(config_dir=config_dir)
+        self.model, self.tokenizer = self.model_and_tokenizer()
+
+        PATH = self.save_dir + "checkpoint_" + checkpoint_ind + ".pt"
+        checkpoint = torch.load(PATH)
+        self.model.load_state_dict(checkpoint['model_state_dict'])
+
+    def preprocess(self, text):
+        start_pos, end_pos = [], []
+        word_list = text.split(' ')
+        for i in range(len(word_list)):
+            ind = text.find(word_list[i])
+            start_pos.append(ind)
+            end_pos.append(ind + len(word_list[i]) - 1)
+
+        entity_spans = []
+        for j, s_pos in enumerate(start_pos):
+            for e_pos in end_pos[j:]:
+                entity_spans.append((s_pos, e_pos))
+
+        return entity_spans
+
+    def infer(self, text):
+        entity_spans = self.preprocess(text)
+        inputs = self.tokenizer(text, entity_spans=entity_spans, return_tensors="pt")
+        input_ids = inputs["input_ids"]
+        attention_mask = inputs["attention_mask"]
+        entity_ids = inputs["entity_ids"]
+        entity_position_ids = inputs["entity_position_ids"]
+        entity_attention_mask = inputs["entity_attention_mask"]
+        outputs = self.model(input_ids=input_ids,
+                             attention_mask=attention_mask,
+                             entity_ids=entity_ids,
+                             entity_position_ids=entity_position_ids,
+                             entity_attention_mask=entity_attention_mask,
+                             )
+        logits = outputs.logits
+        predicted_class_indices = logits.argmax(-1).squeeze().tolist()
+        for span, predicted_class_idx in zip(entity_spans, predicted_class_indices):
+            if predicted_class_idx != 0:
+                print(text[span[0]: span[1]], self.model.config.id2label[predicted_class_idx])
+
+
+
+

@@ -59,7 +59,5 @@ RUN /bin/bash -c "source activate vnpt && \
 	
 WORKDIR /ner_mluke
 
-Run /bin/bash -c "source activate vnpt"
-
-CMD ["sh", "-c", "PYTHONIOENCODING='UTF-8' /bin/bash -c 'source activate vnpt && python ner_mluke/run_train.py'"]
+CMD ["sh", "-c", "PYTHONIOENCODING='UTF-8' /bin/bash -c 'source activate vnpt && python run_train.py'"]
 
