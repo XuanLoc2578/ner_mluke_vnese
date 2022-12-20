@@ -43,7 +43,7 @@ def main():
     #                                            )
 
     optimizer = optim.SGD(model.parameters(), lr=lr, momentum=0.9)
-    scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.1, verbose=True)
+    scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.1, verbose=False)
 
     train_loss_list, val_loss_list = [], []
 
@@ -52,22 +52,23 @@ def main():
         print('epoch {}'.format(epoch))
         model.train()
         for step, train_batch in enumerate(train_dataloader):
-            train_input_ids, train_attention_mask, train_entity_ids, train_entity_position_ids, train_entity_attention_mask, train_label_id = train_batch
+            train_input_ids, train_attention_mask, train_label_id = train_batch
+            # , train_entity_ids, train_entity_position_ids, train_entity_attention_mask
 
             train_input_ids = torch.tensor(train_input_ids, dtype=torch.long, device=device)
             train_attention_mask = torch.tensor(train_attention_mask, dtype=torch.long, device=device)
-            train_entity_ids = torch.tensor(train_entity_ids, dtype=torch.long, device=device)
-            train_entity_position_ids = torch.tensor(train_entity_position_ids, dtype=torch.long, device=device)
-            train_entity_attention_mask = torch.tensor(train_entity_attention_mask, dtype=torch.long, device=device)
+            # train_entity_ids = torch.tensor(train_entity_ids, dtype=torch.long, device=device)
+            # train_entity_position_ids = torch.tensor(train_entity_position_ids, dtype=torch.long, device=device)
+            # train_entity_attention_mask = torch.tensor(train_entity_attention_mask, dtype=torch.long, device=device)
             train_label_id = torch.tensor(train_label_id, dtype=torch.long, device=device)
 
             optimizer.zero_grad()
 
             outputs = model(input_ids=train_input_ids,
                             attention_mask=train_attention_mask,
-                            entity_ids=train_entity_ids,
-                            entity_position_ids=train_entity_position_ids,
-                            entity_attention_mask=train_entity_attention_mask,
+                            # entity_ids=train_entity_ids,
+                            # entity_position_ids=train_entity_position_ids,
+                            # entity_attention_mask=train_entity_attention_mask,
                             labels=train_label_id
                             )
 
@@ -78,17 +79,14 @@ def main():
             scheduler.step(train_loss)
 
             if step % 1000 == 999:
-                print(" * train loss: {}, step: {}, epoch: {}".format(train_loss_list[-1], step, epoch + 1))
+                print(" * train loss: {}, step: {}, epoch: {}, lr: {}".format(train_loss_list[-1], step, epoch + 1, lr))
 
-        print("Saving model checkpoint")
+        print("Saving model checkpoint ", epoch)
         path = '{}/checkpoint_{}.pt'.format(save_dir, epoch)
 
         torch.save({
             'model_state_dict': model.state_dict(),
         }, path)
-
-    for i in train_loss_list:
-        print(i)
 
         # model.eval()
         # with torch.set_grad_enabled(False):

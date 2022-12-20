@@ -13,51 +13,52 @@ class DataProcessor:
         self.max_seq_length = json_object["max_seq_length"]
         self.batch_size = json_object["batch_size"]
         self.num_workers = json_object["num_workers"]
-        self.read_file_dir = json_object["read_file_dir"]
-        self.write_file_dir = json_object["write_file_dir"]
+        # self.read_file_dir = json_object["read_file_dir"]
+        # self.write_file_dir = json_object["write_file_dir"]
 
-    def read_file(self):
-        with open(self.read_file_dir, 'r+') as f:
-            lines = f.readlines()
-
-        text = '-DOCSTART-\t-X-\t-X-\tO\n\n'
-        count = 0
-        for i in range(3, len(lines) - 1):
-            if lines[i] == '\n':
-                count += 1
-            if count == 2:
-                lines.insert(i + 1, text)
-                count = 0
-        lines.append('\n\n' + text)
-
-        return lines
-
-    def write_file(self):
-        lines = self.read_file(self.read_file_dir)
-
-        if self.write_file_dir is not None:
-            with open(self.write_file_dir, 'w') as f:
-                for line in lines:
-                    f.write(f"{line}")
+    # def read_file(self):
+    #     with open(self.read_file_dir, 'r+') as f:
+    #         lines = f.readlines()
+    #
+    #     text = '-DOCSTART-\t-X-\t-X-\tO\n\n'
+    #     count = 0
+    #     for i in range(3, len(lines) - 1):
+    #         if lines[i] == '\n':
+    #             count += 1
+    #         if count == 2:
+    #             lines.insert(i + 1, text)
+    #             count = 0
+    #     lines.append('\n\n' + text)
+    #
+    #     return lines
+    #
+    # def write_file(self):
+    #     lines = self.read_file(self.read_file_dir)
+    #
+    #     if self.write_file_dir is not None:
+    #         with open(self.write_file_dir, 'w') as f:
+    #             for line in lines:
+    #                 f.write(f"{line}")
 
     def dataloader(self, tokenizer, dataset_file):
-        custom_label2id = {'O': 0,
-                           'B-PER': 1,
-                           'I-PER': 2,
-                           'B-MISC': 3,
-                           'I-MISC': 4,
-                           'B-LOC': 5,
-                           'B-ORG': 6,
-                           'I-ORG': 7,
-                           'I-LOC': 8
+        custom_label2id = {"O": 0,
+                           "B-PER": 1,
+                           "I-PER": 2,
+                           "B-MISC": 3,
+                           "I-MISC": 4,
+                           "B-LOC": 5,
+                           "B-ORG": 6,
+                           "I-ORG": 7,
+                           "I-LOC": 8,
+                           "UNK": 9
                            }
 
         documents = self.load_documents(dataset_file=dataset_file)
         examples = self.load_examples(documents=documents, tokenizer=tokenizer)
         final_tag_list = self.create_tag_list(documents=documents, examples=examples)
-        final_span_list = self.create_span(examples=examples)
+        # final_span_list = self.create_span(examples=examples)
         params_list = self.create_list_params(examples=examples,
-                                              span_list=final_span_list,
+                                              # span_list=final_span_list,
                                               max_seq_length=self.max_seq_length,
                                               tokenizer=tokenizer
                                               )
@@ -237,70 +238,72 @@ class DataProcessor:
 
         return final_tag_list
 
-    def create_span(self, examples):
-        print("Creating list of span")
-        final_word_list = []
-        for i in range(len(examples)):
-            final_word_list.append(examples[i]['words'])
-        final_span_list = []
+    # def create_span(self, examples):
+    #     print("Creating list of span")
+    #     final_word_list = []
+    #     for i in range(len(examples)):
+    #         final_word_list.append(examples[i]['words'])
+    #     final_span_list = []
+    #
+    #     for i in range(len(final_word_list)):
+    #         tmp_sen = ' '.join(final_word_list[i])
+    #         start_pos = []
+    #         end_pos = []
+    #
+    #         for j in range(len(final_word_list[i])):
+    #             tmp_ind = tmp_sen.find(final_word_list[i][j])
+    #             start_pos.append(tmp_ind)
+    #             end_pos.append(tmp_ind + len(final_word_list[i][j]) - 1)
+    #
+    #         entity_span = []
+    #         # for k, s_pos in enumerate(start_pos):
+    #         #     for e_pos in end_pos[k:]:
+    #         #         entity_span.append((s_pos, e_pos))
+    #         for idx in range(len(start_pos)):
+    #             entity_span.append((start_pos[idx], end_pos[idx]))
+    #
+    #         final_span_list.append(entity_span)
+    #
+    #     return final_span_list
 
-        for i in range(len(final_word_list)):
-            tmp_sen = ' '.join(final_word_list[i])
-            start_pos = []
-            end_pos = []
-
-            for j in range(len(final_word_list[i])):
-                tmp_ind = tmp_sen.find(final_word_list[i][j])
-                start_pos.append(tmp_ind)
-                end_pos.append(tmp_ind + len(final_word_list[i][j]) - 1)
-
-            entity_span = []
-            for k, s_pos in enumerate(start_pos):
-                for e_pos in end_pos[k:]:
-                    entity_span.append((s_pos, e_pos))
-
-            final_span_list.append(entity_span)
-
-        return final_span_list
-
-    def create_list_params(self, examples, span_list, max_seq_length, tokenizer):
+    def create_list_params(self, examples, max_seq_length, tokenizer): #, span_list
         print("Creating list of parameters")
         list_input_ids, list_attention_mask, list_entity_ids, list_entity_position_ids, list_entity_attention_mask = [], [], [], [], []
 
         for i in range(len(examples)):
             source_encoding = tokenizer(
                 text=' '.join(examples[i]["words"]),
-                entity_spans=span_list[i],
+                # entity_spans=span_list[i],
                 max_length=max_seq_length,
                 padding='max_length',
                 truncation=True,
-                return_attention_mask=True
-                # add_special_tokens=True
+                return_attention_mask=True,
+                add_special_tokens=True
                 # return_tensors="pt"
             )
 
-            for j in range(len(source_encoding['entity_position_ids'])):
-                if len(source_encoding['entity_position_ids'][j]) > 30:
-                    source_encoding['entity_position_ids'][j] = source_encoding['entity_position_ids'][j][:30]
+            # for j in range(len(source_encoding['entity_position_ids'])):
+            #     if len(source_encoding['entity_position_ids'][j]) > 30:
+            #         source_encoding['entity_position_ids'][j] = source_encoding['entity_position_ids'][j][:30]
 
             list_input_ids.append(source_encoding["input_ids"])
             list_attention_mask.append(source_encoding["attention_mask"])
-            list_entity_ids.append(source_encoding["entity_ids"])
-            list_entity_position_ids.append(source_encoding["entity_position_ids"])
-            list_entity_attention_mask.append(source_encoding["entity_attention_mask"])
+            # list_entity_ids.append(source_encoding["entity_ids"])
+            # list_entity_position_ids.append(source_encoding["entity_position_ids"])
+            # list_entity_attention_mask.append(source_encoding["entity_attention_mask"])
 
         list_input_ids_tensor = torch.tensor([f for f in list_input_ids])
         list_attention_mask_tensor = torch.tensor([f for f in list_attention_mask])
-        list_entity_ids_tensor = torch.tensor([f for f in list_entity_ids])
-        list_entity_position_ids_tensor = torch.tensor([f for f in list_entity_position_ids])
-        list_entity_attention_mask_tensor = torch.tensor([f for f in list_entity_attention_mask])
+        # list_entity_ids_tensor = torch.tensor([f for f in list_entity_ids])
+        # list_entity_position_ids_tensor = torch.tensor([f for f in list_entity_position_ids])
+        # list_entity_attention_mask_tensor = torch.tensor([f for f in list_entity_attention_mask])
 
         list_params = [
             list_input_ids_tensor,
             list_attention_mask_tensor,
-            list_entity_ids_tensor,
-            list_entity_position_ids_tensor,
-            list_entity_attention_mask_tensor
+            # list_entity_ids_tensor,
+            # list_entity_position_ids_tensor,
+            # list_entity_attention_mask_tensor
         ]
         return list_params
 
@@ -330,7 +333,7 @@ class DataProcessor:
             tmp_label_id.append(1)
 
             while len(tmp_label_id) < max_seq_length:
-                tmp_label_id.append(0)
+                tmp_label_id.append(9)
 
             label_id.append(tmp_label_id)
 
@@ -339,15 +342,17 @@ class DataProcessor:
 
     def create_dataloader(self, params_list, label_id_tensor, batch_size, num_workers):
         print("Creating DataLoader")
-        input_ids_tensor, attention_mask_tensor, entity_ids_tensor, entity_position_ids_tensor, entity_attention_mask_tensor = params_list
+        input_ids_tensor, attention_mask_tensor = params_list
+        # , entity_ids_tensor, entity_position_ids_tensor, entity_attention_mask_tensor
 
         dataset = TensorDataset(input_ids_tensor,
                                 attention_mask_tensor,
-                                entity_ids_tensor,
-                                entity_position_ids_tensor,
-                                entity_attention_mask_tensor,
+                                # entity_ids_tensor,
+                                # entity_position_ids_tensor,
+                                # entity_attention_mask_tensor,
                                 label_id_tensor
                                 )
         dataloader = DataLoader(dataset, batch_size=batch_size, num_workers=num_workers)
 
         return dataloader
+
